@@ -16,9 +16,11 @@ function setDarkMode(isDarkMode) {
 	if (isDarkMode) {
 		document.documentElement.classList.remove(lightModeName);
 		document.documentElement.classList.add(darkModeName);
+		darkmodeToggleElement.name = 'moon-stars-fill';
 	} else {
 		document.documentElement.classList.remove(darkModeName);
 		document.documentElement.classList.add(lightModeName);
+		darkmodeToggleElement.name = 'sun-fill';
 	}
 	localStorage.setItem(darkModeThemeStorageKey, isDarkMode); // Store the dark mode preference in local storage
 	if (typeof changeDarkMode === 'function') changeDarkMode(isDarkMode); // Call the changeDarkMode function if it exists
