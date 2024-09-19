@@ -15,9 +15,34 @@
 		setBasePath('/node_modules/@shoelace-style/shoelace/dist');
 	</script>
 	 -->
-	<!-- Add Shoelace icons (for sun and moon icons) -->
+	<!-- Add icons -->
 	<script type="module">
 		import '@shoelace-style/shoelace/dist/components/icon/icon.js';
+		import { registerIconLibrary } from '@shoelace-style/shoelace/dist/utilities/icon-library.js';
+
+		registerIconLibrary('my-icons', {
+			resolver: name => `/assets/icons/${name}.svg`,
+			mutator: svg => svg.setAttribute('fill', 'currentColor')
+		});
+
+		registerIconLibrary('fa', {
+			resolver: name => {
+				const filename = name.replace(/^fa[rbs]-/, '');
+				let folder = 'regular';
+				if (name.substring(0, 4) === 'fas-') folder = 'solid';
+				if (name.substring(0, 4) === 'fab-') folder = 'brands';
+				return `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/svgs/${folder}/${filename}.svg`;
+			},
+			mutator: svg => svg.setAttribute('fill', 'currentColor')
+		});
+
+		registerIconLibrary('material', {
+			resolver: name => {
+				const match = name.match(/^(.*?)(_(round|sharp))?$/);
+				return `https://cdn.jsdelivr.net/npm/@material-icons/svg@1.0.5/svg/${match[1]}/${match[3] || 'outline'}.svg`;
+			},
+			mutator: svg => svg.setAttribute('fill', 'currentColor')
+		});
 	</script>
 	<!-- Add Shoelace components -->
 	<script type="module" src="./vite-shoelace-seed-index.ts"></script>
@@ -25,13 +50,16 @@
 
 <body>
 	<!-- Theme switch -->
-	<sl-icon id="theme-switcher" name="sun-fill" style="cursor: pointer; font-size: 24px; position: absolute; right: 5px;
+	<sl-icon id="theme-switcher" name="sun-fill" label="Switch theme" style="cursor: pointer; font-size: 24px; position: absolute; right: 5px;
     top: 5px;"></sl-icon>
-	<script src="theme-switch.js"></script>
+	<script src="theme-switch.js" type="module"></script>
 	<!-- ------------------------------------------------------------ -->
 	<div style="margin: 5em;">
 		<button>default button</button>
 		<sl-button type="primary">Click Me</sl-button>
+		<sl-icon library="my-icons" name="smile"></sl-icon>
+		<sl-icon library="fa" name="far-star"></sl-icon>
+		<sl-icon library="material" name="shopping_basket_round"></sl-icon>
 	</div>
 </body>
 
