@@ -1,14 +1,21 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+	root: 'src/',
 	build: {
-		outDir: 'dist', // Directory for the build
+		outDir: '../dist/', // Directory for the build
 		rollupOptions: {
-			input: './vite-shoelace-seed-index.html',
+			input: 'src/vite-shoelace-seed-index.html',
 			output: {
 				entryFileNames: 'vite-shoelace-seed-index.js',
 				chunkFileNames: 'vite-shoelace-seed-index.js',
-				assetFileNames: 'vite-shoelace-seed-index.[ext]',
+				/* `assetFileNames` in the Vite configuration specifies the format for naming asset files (such as
+				images, fonts, etc.) that are part of the build output. In this case, `[name].[ext]` is used as
+				the format, where `[name]` represents the original asset file name and `[ext]` represents the
+				original file extension. This configuration ensures that asset files are named based on their
+				original names and extensions in the build output. */
+				/* add path to the assetFileNames to make sure the assets are copied to the dist folder */
+				assetFileNames: 'assets/[name].[ext]',
 			}
 		},
 		// Plugin to rename the index.html in the output
