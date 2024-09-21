@@ -50,8 +50,14 @@
 
 <body>
 	<!-- Theme switch -->
-	<sl-icon id="shoelace-theme-switch" name="sun-fill" label="Switch theme" style="cursor: pointer; font-size: 24px; position: absolute; right: 5px;
-    top: 5px;"></sl-icon>
+	 <style>
+	svg {
+		-webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+		filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+		/* Similar syntax to box-shadow */
+	}
+	 </style>
+	<sl-icon id="shoelace-theme-switch" name="sun-fill" label="Switch theme"></sl-icon>
 	<script src="shoelace-theme-switch.js" type="module"></script>
 	<!-- ------------------------------------------------------------ -->
 	<div class="m-5 p-5">
@@ -61,6 +67,9 @@
 		<sl-icon library="fa" name="far-star"></sl-icon>
 		<sl-icon library="material" name="shopping_basket_round"></sl-icon>
 		<hr class="my-3">
+		<div>
+			<a href="https://shoelace.style/components/icon">icons</a>
+		</div>
 		<sl-badge variant="primary" pill>Vite</sl-badge>
 		<sl-badge variant="primary" pill>LIT</sl-badge>
 		<sl-badge variant="primary" pill>Shoelace</sl-badge>
