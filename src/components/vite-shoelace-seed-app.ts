@@ -1,8 +1,10 @@
-import '@shoelace-style/shoelace';
 /*
+import '@shoelace-style/shoelace';
+*/
+/**/
 import '@shoelace-style/shoelace/dist/components/icon/icon.js';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
-*/
+/**/
 
 export class ViteSeedApp {
 	init(): string {
