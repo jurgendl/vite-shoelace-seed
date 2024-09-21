@@ -1,7 +1,7 @@
 const darkModeThemeStorageKey = 'dark-mode';
 const lightModeName = 'sl-theme-light';
 const darkModeName = 'sl-theme-dark';
-const darkmodeToggleElementId = 'theme-switcher';
+const darkmodeToggleElementId = 'shoelace-theme-switch';
 
 const darkmodeToggleElement = document.getElementById(darkmodeToggleElementId);
 
